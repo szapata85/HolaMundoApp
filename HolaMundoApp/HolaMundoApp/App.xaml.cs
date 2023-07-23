@@ -1,5 +1,4 @@
-﻿using HolaMundoApp.Services;
-using HolaMundoApp.Views;
+﻿using HolaMundoApp.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +12,6 @@ namespace HolaMundoApp
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 
