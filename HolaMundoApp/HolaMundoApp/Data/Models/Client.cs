@@ -1,4 +1,4 @@
-﻿namespace HolaMundoApp.Data
+﻿namespace HolaMundoApp.Data.Models
 {
     public class Client
     {
