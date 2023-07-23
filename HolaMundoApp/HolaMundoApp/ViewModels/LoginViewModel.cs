@@ -12,10 +12,15 @@ namespace HolaMundoApp.ViewModels
 
         private string _username;
         private string _password;
+        private bool _ShowMessage;
+        private string _WelcomeMessage;
+        private Color _ColorMessage;
 
         public string UserName { get => _username; set => SetProperty(ref _username, value); }
         public string Password { get => _password; set => SetProperty(ref _password, value); }
-
+        public bool ShowMessage { get => _ShowMessage; set => SetProperty(ref _ShowMessage, value); }
+        public string WelcomeMessage { get => _WelcomeMessage; set => SetProperty(ref _WelcomeMessage, value); }
+        public Color ColorMessage { get => _ColorMessage; set => SetProperty(ref _ColorMessage, value); }
 
         public LoginViewModel()
         {
@@ -27,11 +32,21 @@ namespace HolaMundoApp.ViewModels
             if (ValidateFields())
             {
                 await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+                ShowMessage = false;
+                UserName = string.Empty;
+                Password = string.Empty;
+            }
+            else{
+                ShowMessage = true;
+                ColorMessage = Color.Red;
+                WelcomeMessage = "Usuario o Contraseña incorrectos";
             }
         }
         private bool ValidateFields()
         {
             return !string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password);
         }
+
+       
     }
 }
