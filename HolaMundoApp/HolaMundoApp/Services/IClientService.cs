@@ -6,7 +6,7 @@ namespace HolaMundoApp.Services
 {
     public interface IClientService
     {
-        Task<List<Client>> GetClients();
+        Task<List<Client>> GetClientsAsync();
     }
 
 }

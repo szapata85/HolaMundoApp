@@ -18,14 +18,13 @@ namespace HolaMundoApp.Services
             _clientApi = clientApi;
         }
 
-        public async Task<List<Client>> GetClients()
+       public async Task<List<Client>> GetClientsAsync()
         {
             List<Client> clients = new List<Client>();
             try
             {
-                HttpResponseMessage  response = await _clientApi.GetClients();
-                //clients = response.ToList();
-                return clients;
+                var response = await _clientApi.GetClientsAsync();
+                return response;
             }
             catch (Exception ex)
             {
