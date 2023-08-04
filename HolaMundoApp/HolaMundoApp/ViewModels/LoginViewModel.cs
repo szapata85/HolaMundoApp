@@ -31,7 +31,8 @@ namespace HolaMundoApp.ViewModels
         {
             if (ValidateFields())
             {
-                await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+                //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+                await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
                 ShowMessage = false;
                 UserName = string.Empty;
                 Password = string.Empty;

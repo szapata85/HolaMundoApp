@@ -12,24 +12,24 @@ using Xamarin.Forms.Internals;
 
 namespace HolaMundoApp
 {
-    internal class Startup
+    public static class Startup
     {
         private const string INTERFACE_PREFIX = "I";
         private const string SERVICES_NAMESPACE = "HolaMundoApp.Services";
-        //private const string SINGLE_INSTANCE_SERVICES_NAMESPACE = "HolaMundoApp.Services.SingleInstance";
+        //private const string SINGLE_INSTANCE_SERVICES_NAMESPACE = "ExampleApp.Services.SingleInstance";
         private const string VIEW_MODELS_NAMESPACE = "HolaMundoApp.ViewModels";
 
         private static IContainer _container;
 
         static Startup()
         {
-            ServiceCollection serviceCollection = new ServiceCollection();
-            ContainerBuilder containerBuilder = new ContainerBuilder();
+            var serviceCollection = new ServiceCollection();
+            var containerBuilder = new ContainerBuilder();
 
             serviceCollection.AddTransient<BaseAddressHandler>();
 
             // APIs
-            RefitSettings refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer(new JsonSerializerSettings
+            var refitSettings = new RefitSettings(new NewtonsoftJsonContentSerializer(new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore
             }));
@@ -72,6 +72,5 @@ namespace HolaMundoApp
         }
 
         public static T Resolve<T>() => _container.Resolve<T>();
-
     }
 }
