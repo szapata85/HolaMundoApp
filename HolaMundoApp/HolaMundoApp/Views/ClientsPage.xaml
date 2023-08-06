@@ -5,7 +5,6 @@
              xmlns:viewModels="clr-namespace:HolaMundoApp.ViewModels"
              xmlns:utility="clr-namespace:HolaMundoApp.Helpers"
              utility:ViewModelLocator.AutoWireViewModel="True"
-             x:DataType="viewModels:ClientsViewModel"
              xmlns:controls="clr-namespace:HolaMundoApp.Controls"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="HolaMundoApp.Views.ClientsPage"

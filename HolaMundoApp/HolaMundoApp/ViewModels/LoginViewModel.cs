@@ -1,7 +1,5 @@
-﻿using HolaMundoApp.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using HolaMundoApp.Resx;
+using HolaMundoApp.Views;
 using Xamarin.Forms;
 
 namespace HolaMundoApp.ViewModels
@@ -33,14 +31,12 @@ namespace HolaMundoApp.ViewModels
             {
                 //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
                 await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
-                ShowMessage = false;
-                UserName = string.Empty;
-                Password = string.Empty;
             }
             else{
-                ShowMessage = true;
-                ColorMessage = Color.Red;
-                WelcomeMessage = "Usuario o Contraseña incorrectos";
+                await Application.Current.MainPage.DisplayAlert(
+                    AppResources.LoginPageInvalidLoginTitle,
+                    AppResources.LoginPageInvalidLoginMessage, 
+                    AppResources.OkText);
             }
         }
         private bool ValidateFields()
