@@ -38,6 +38,11 @@ namespace HolaMundoApp
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
                 .AddHttpMessageHandler<BaseAddressHandler>();
 
+            serviceCollection.AddRefitClient<IAccountApi>(refitSettings)
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
+                .AddHttpMessageHandler<BaseAddressHandler>();
+
+
             containerBuilder.Populate(serviceCollection);
 
             containerBuilder.RegisterType<AppShell>();
