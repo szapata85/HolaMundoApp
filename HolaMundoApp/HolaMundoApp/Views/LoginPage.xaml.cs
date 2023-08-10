@@ -15,7 +15,7 @@ namespace HolaMundoApp.Views
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            
         }
     }
 }

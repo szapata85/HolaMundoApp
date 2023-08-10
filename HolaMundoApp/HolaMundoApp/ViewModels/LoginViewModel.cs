@@ -8,8 +8,6 @@ namespace HolaMundoApp.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         private readonly IAccountService _accountService;
-        private string _username;
-        private string _password;
 
         public LoginViewModel(IAccountService accountService)
         {
@@ -17,14 +15,13 @@ namespace HolaMundoApp.ViewModels
             LoginCommand = new Command(OnLoginClicked);
         }
 
+
+        private string _username;
+        private string _password;
+
         public string UserName { get => _username; set => SetProperty(ref _username, value); }
         public string Password { get => _password; set => SetProperty(ref _password, value); }
         public Command LoginCommand { get; }
-
-        public LoginViewModel()
-        {
-            LoginCommand = new Command(OnLoginClicked);
-        }
 
         private async void OnLoginClicked(object obj)
         {
