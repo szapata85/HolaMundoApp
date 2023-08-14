@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utility="clr-namespace:HolaMundoApp.Helpers"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewModels="clr-namespace:HolaMundoApp.ViewModels"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             x:DataType="viewModels:ClientViewModel"
+             Title="Client"
+             x:Class="HolaMundoApp.Views.ClientPage">
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
+
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Label Text="{Binding Client.Name}"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center" />
+
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+                <Label Grid.Column="0" Grid.Row="0" Text="DNA:" />
+                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Client.Dna}" />
+
+                <Label Grid.Column="0" Grid.Row="1" Text="Age:" />
+                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Client.Age}" />
+
+                <Label Grid.Column="0" Grid.Row="2" Text="Height:" />
+                <Label Grid.Column="1" Grid.Row="2" Text="{Binding Client.Height}" />
+
+                <Label Grid.Column="0" Grid.Row="3" Text="Weight:" />
+                <Label Grid.Column="1" Grid.Row="3" Text="{Binding Client.Weight}" />
+
+                <Label Grid.Column="0" Grid.Row="4" Text="Life Expectancy:" />
+                <Label Grid.Column="1" Grid.Row="4" Text="{Binding Client.LifeExpectancy}" />
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,5 @@
 ﻿using HolaMundoApp.Data.Models;
+using HolaMundoApp.Data.Models.Dto;
 using Refit;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -10,6 +11,10 @@ namespace HolaMundoApp.Data.API
     {
         [Get("/Clients")]
         Task<List<Client>> GetClientsAsync();
+
+        [Get("/Clients/{id}")]
+        Task<ClientDetailDto> GetClient(long id);
+
 
     }
 }

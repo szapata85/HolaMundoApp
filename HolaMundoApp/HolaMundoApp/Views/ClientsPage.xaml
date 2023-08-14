@@ -16,6 +16,10 @@
         <ResourceDictionary>
             <DataTemplate x:DataType="models:Client" x:Key="ClientDefaultTemplate">
                 <StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ClientsViewModel}}, Path=ClientTappedCommand}"
+                                                              CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
                     <Frame CornerRadius="15" BackgroundColor="AliceBlue">
                         <Grid ColumnDefinitions="*,*">
                             <Label Grid.Column="0" Text="{Binding Name}"/>
@@ -28,6 +32,10 @@
 
             <DataTemplate x:DataType="models:Client" x:Key="ClientOneToFiveTemplate">
                 <StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ClientsViewModel}}, Path=ClientTappedCommand}"
+                                                              CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
                     <Frame CornerRadius="15" BackgroundColor="LightCoral">
                         <Grid ColumnDefinitions="*,*">
                             <Label Grid.Column="0" Text="{Binding Name}"/>
@@ -40,6 +48,10 @@
 
             <DataTemplate x:DataType="models:Client" x:Key="ClientSixToTenTemplate">
                 <StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ClientsViewModel}}, Path=ClientTappedCommand}"
+                                                              CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
                     <Frame CornerRadius="15"
                        BackgroundColor="LightGreen">
                         <Grid ColumnDefinitions="*,*">

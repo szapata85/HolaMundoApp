@@ -1,10 +1,12 @@
 ﻿using HolaMundoApp.Data.Models;
 using HolaMundoApp.Services;
+using HolaMundoApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.ObjectModel;
+using Xamarin.Forms;
 
 namespace HolaMundoApp.ViewModels
 {
@@ -12,6 +14,7 @@ namespace HolaMundoApp.ViewModels
     {
         private readonly IClientService _clientService;
         public ICommand AppearingCommand { get; set; }
+        public ICommand ClientTappedCommand { get; set; }
         public ObservableRangeCollection<Client> Clients { get; set; } = new ObservableRangeCollection<Client>();
 
 
@@ -19,6 +22,7 @@ namespace HolaMundoApp.ViewModels
         {
             this.Title = "Clients";
             this.AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
+            this.ClientTappedCommand = new AsyncCommand<Client>(OnClientTapped);
             _clientService = clientService;
         }
 
@@ -46,6 +50,17 @@ namespace HolaMundoApp.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        private Task OnClientTapped(Client client)
+        {
+            if (client == null)
+            {
+                return Task.CompletedTask;
+            }
+
+            return Shell.Current.GoToAsync($"{nameof(ClientPage)}?{nameof(ClientViewModel.ClientId)}={client.Id}");
+
         }
     }
 }
