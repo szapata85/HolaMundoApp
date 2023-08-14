@@ -25,10 +25,10 @@ namespace HolaMundoApp.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-            
-            if (await _accountService.LoginAsync(UserName, Password))
-            {
-                await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
+            if (ValidateFields() && await _accountService.LoginAsync(UserName, Password))
+
+                {
+                    await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
             }
             else{
                 await Application.Current.MainPage.DisplayAlert(
