@@ -31,7 +31,7 @@ namespace HolaMundoApp.ViewModels
         {
             try
             {
-                this.IsBusy = true;
+                IsBusy = true;
                 List<Client> clients = await _clientService.GetClientsAsync();
                 if (clients != null)
                 {

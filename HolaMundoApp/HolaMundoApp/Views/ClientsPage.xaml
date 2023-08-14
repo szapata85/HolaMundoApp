@@ -60,11 +60,28 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout>
+        <!--<StackLayout>
             <CollectionView ItemsSource="{Binding Clients}"
                             EmptyView="No Clients to display"                            
                             ItemTemplate="{StaticResource ClientTemplateSelector}">
             </CollectionView>
-        </StackLayout>
+        </StackLayout>-->
+        <Grid>
+            <!--Page Content-->
+            <StackLayout IsVisible="{Binding IsNotBusy}" VerticalOptions="FillAndExpand">
+                <CollectionView ItemsSource="{Binding Clients}"
+                        EmptyView="No Clients to display"                 
+                        ItemTemplate="{StaticResource ClientTemplateSelector}">
+                    <CollectionView.Header>
+                        <Grid ColumnDefinitions="*,*" Margin="0,10">
+                            <Label Text="Name" TextColor="Black"/>
+                            <Label Grid.Column="1" Text="DNA" TextColor="Black"/>
+                        </Grid>
+                    </CollectionView.Header>
+                </CollectionView>
+            </StackLayout>
+            <!--Loading Indicator-->
+            <ActivityIndicator IsRunning="{Binding IsBusy}" VerticalOptions="Center" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
