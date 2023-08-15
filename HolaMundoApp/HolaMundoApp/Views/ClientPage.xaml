@@ -6,8 +6,15 @@
              x:DataType="viewModels:ClientViewModel"
              Title="Client"
              x:Class="HolaMundoApp.Views.ClientPage"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:converters="clr-namespace:HolaMundoApp.Converters">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DoubleToColorConverter x:Key="DoubleToColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>
@@ -17,7 +24,8 @@
         <StackLayout Padding="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Label Text="{Binding Client.Name}"
                 VerticalOptions="Start" 
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" 
+                   Style="{StaticResource Heading1}"/>
 
             <Grid ColumnDefinitions="*,*"
                   RowDefinitions="Auto,Auto,Auto,Auto,Auto">
@@ -34,7 +42,8 @@
                 <Label Grid.Column="1" Grid.Row="3" Text="{Binding Client.Weight}" />
 
                 <Label Grid.Column="0" Grid.Row="4" Text="Life Expectancy:" />
-                <Label Grid.Column="1" Grid.Row="4" Text="{Binding Client.LifeExpectancy}" />
+                <Label Grid.Column="1" Grid.Row="4" Text="{Binding Client.LifeExpectancy}" 
+                       TextColor="{Binding Client.LifeExpectancy,Converter={StaticResource DoubleToColorConverter}}"/>
             </Grid>
             <maps:Map x:Name="ClientLocationMap" IsShowingUser="True"/>
         </StackLayout>
