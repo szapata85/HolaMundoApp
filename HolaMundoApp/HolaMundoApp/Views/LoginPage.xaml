@@ -18,8 +18,9 @@
 
             <Entry x:Name="usernameEntry" Text="{Binding UserName}" Placeholder="Username" />
             <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="Password" IsPassword="True" />
-
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+            <Frame Style="{StaticResource ButtonFrameStyle}">
+                <Button Text="Login" Style="{StaticResource ButtonStyle}" Command="{Binding LoginCommand}"/>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

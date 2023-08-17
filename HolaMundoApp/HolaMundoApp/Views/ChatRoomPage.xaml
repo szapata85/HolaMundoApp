@@ -6,11 +6,5 @@
              xmlns:utility="clr-namespace:HolaMundoApp.Helpers"
              utility:ViewModelLocator.AutoWireViewModel="True">
 
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    
 </ContentPage>
