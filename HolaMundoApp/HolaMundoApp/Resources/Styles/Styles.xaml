@@ -6,7 +6,8 @@
     <Color x:Key="PrimaryColor">#005487</Color>
     <Color x:Key="WhiteColor">White</Color>
     <Color x:Key="BlackColor">Black</Color>
-    
+    <Color x:Key="ElegantDarkColor">#D3D3D3</Color>
+
     <!--Label Styles-->
 
     <Style TargetType="Label">

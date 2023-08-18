@@ -11,7 +11,6 @@ using Xamarin.Forms;
 
 namespace HolaMundoApp.ViewModels
 {
-    [QueryProperty(nameof(Username), nameof(Username))]
     public class ChatRoomViewModel : BaseViewModel
     {
         private readonly IChatService _chatService;
@@ -32,23 +31,25 @@ namespace HolaMundoApp.ViewModels
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
             SendMsgCommand = new AsyncCommand(async () => await OnSendMsgClicked());
             //SendMsgCommand = new Command(OnSendMsgClicked);
+
+            _chatService.Connect();
         }
 
         private async Task OnSendMsgClicked()
         {
-            await _chatService.SendMessageToAll(new MessageItem { Message = Message, SourceId = 0});
+            await _chatService.SendMessageToAll(new MessageItem { Message = Message, SourceId = Username});
             AddMessage(Username, Message, true);
         }
 
         private void GetMessage(MessageItem messageItem)
         {
-            AddMessage(messageItem.SourceId.ToString(), messageItem.Message, false);
+            AddMessage(messageItem.SourceId, messageItem.Message, false);
         }
 
             private void AddMessage(string User, string message, bool isOwner = true)
         {
             List<MessageModel> tempList = MessagesList.ToList();
-            tempList.Add(new MessageModel { IdOwnerMessage = isOwner, Message = message, UserName = User });
+            tempList.Add(new MessageModel { IsOwnerMessage = isOwner, Message = message, UserName = User });
             MessagesList = new List<MessageModel>(tempList);
             Message = string.Empty;
         }
@@ -56,9 +57,9 @@ namespace HolaMundoApp.ViewModels
         private async Task OnAppearingAsync()
         {
             Username = GlobalVarsApplication.USERNAME;
-
+            MessagesList = new List<MessageModel>();
             _chatService.ReceiveMessage(GetMessage);
-            await _chatService.Connect();
+            await _chatService.Init(Username);
         }
     }
 }

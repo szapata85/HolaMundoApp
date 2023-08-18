@@ -8,6 +8,7 @@ namespace HolaMundoApp.Services
     {
         Task Connect();
         Task Disconnect();
+        Task Init(string Username);
         Task SendMessageToAll(MessageItem messageItem);
         void ReceiveMessage(Action<MessageItem> messageItem);
     }
