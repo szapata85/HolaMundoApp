@@ -7,6 +7,7 @@
     <Color x:Key="WhiteColor">White</Color>
     <Color x:Key="BlackColor">Black</Color>
     <Color x:Key="ElegantDarkColor">#D3D3D3</Color>
+    <Color x:Key="YellouColor">#FFB71B</Color>
 
     <!--Label Styles-->
 

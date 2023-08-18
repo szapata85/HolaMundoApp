@@ -5,7 +5,8 @@
              x:Class="HolaMundoApp.Views.ChatRoomPage"
              xmlns:utility="clr-namespace:HolaMundoApp.Helpers"
              utility:ViewModelLocator.AutoWireViewModel="True"
-             xmlns:converters="clr-namespace:HolaMundoApp.Converters">
+             xmlns:converters="clr-namespace:HolaMundoApp.Converters"
+             Title="CHAT ROOM">
 
 
     <ContentPage.Resources>
@@ -46,7 +47,7 @@
                                 <Frame CornerRadius="30"
                                        HasShadow="True"
                                        Margin="0"
-                                       BackgroundColor="{StaticResource ElegantDarkColor}"
+                                       BackgroundColor="{StaticResource YellouColor}"
                                        Padding="10">
                                     <Label Text="{Binding Message}"
                                            Margin="10"
@@ -65,7 +66,7 @@
         </ListView>
         <StackLayout Grid.Row="1"
              Orientation="Horizontal">
-            <Entry Text="{Binding Message}"
+            <Entry Text="{Binding MessageIn}"
            
            HorizontalOptions="FillAndExpand"></Entry>
             <Button Text="Send" Command="{Binding SendMsgCommand}"/>
