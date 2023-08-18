@@ -34,6 +34,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\ChatBotPage.xaml.cs">
+      <DependentUpon>ChatBotPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
     </Compile>

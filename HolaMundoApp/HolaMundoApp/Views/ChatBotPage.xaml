@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="HolaMundoApp.Views.ChatBotPage"
+             xmlns:utility="clr-namespace:HolaMundoApp.Helpers"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:converters="clr-namespace:HolaMundoApp.Converters"
+             Title="CHATBOT Llama">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToVisibility x:Key="BooleanToVisibility" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
+
+    <Grid RowDefinitions="*, auto" Margin="10">
+        <ListView ItemsSource="{Binding MessagesList}"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid RowDefinitions="auto,auto">
+                            <Grid ColumnDefinitions="40, *" IsVisible="{Binding IsOwnerMessage}">
+                                <Frame CornerRadius="30"
+                                       Grid.Column="1"
+                                       HasShadow="True"
+                                       Margin="0"
+                                       BackgroundColor="{StaticResource PrimaryColor}"
+                                       Padding="10">
+                                    <Label Text="{Binding Message}"
+                                           Margin="10"
+                                           TextColor="{StaticResource WhiteColor}"
+                                           LineBreakMode="WordWrap"/>
+                                </Frame>
+                            </Grid>
+                            <Grid ColumnDefinitions="*, 40"
+                                  Grid.Row="1"
+                                  IsVisible="{Binding IsOwnerMessage, Converter={StaticResource  BooleanToVisibility}, ConverterParameter=Inverse}">
+                                <Frame CornerRadius="30"
+                                       HasShadow="True"
+                                       Margin="0"
+                                       BackgroundColor="{StaticResource YellouColor}"
+                                       Padding="10">
+                                    <Label Text="{Binding Message}"
+                                           Margin="10"
+                                           TextColor="{StaticResource WhiteColor}"
+                                           LineBreakMode="WordWrap"/>
+                                </Frame>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Grid.Row="1"
+             Orientation="Horizontal">
+            <Entry Text="{Binding MessageIn}"
+           
+           HorizontalOptions="FillAndExpand"></Entry>
+            <Button Text="Send" Command="{Binding SendMsgCommand}"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
