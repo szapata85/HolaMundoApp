@@ -39,13 +39,16 @@ namespace HolaMundoApp.ViewModels
 
         private async Task OnSendMsgClicked()
         {
-            await _chatService.SendMessageToAll(new MessageItem { Message = MessageIn, SourceId = Username});
-            AddMessage(Username, MessageIn, true);
+            if (!string.IsNullOrEmpty(MessageIn))
+            {
+                await _chatService.SendMessageToAll(new MessageItem { Message = MessageIn, SourceId = Username });
+                AddMessage(Username, MessageIn, true);
+            }
         }
 
         private void GetMessage(MessageItem messageItem)
         {
-            if (messageItem.SourceId != Username)            
+            if (messageItem.SourceId != Username && !string.IsNullOrEmpty(messageItem.Message))
                 AddMessage(messageItem.SourceId, messageItem.Message, false);
         }
 

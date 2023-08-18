@@ -30,7 +30,6 @@
                             <Grid ColumnDefinitions="40, *" IsVisible="{Binding IsOwnerMessage}">
                                 <Frame CornerRadius="30"
                                        Grid.Column="1"
-                                       HorizontalOptions="End"
                                        HasShadow="True"
                                        Margin="0"
                                        BackgroundColor="{StaticResource PrimaryColor}"
