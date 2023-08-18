@@ -1,4 +1,6 @@
-﻿using HolaMundoApp.Resx;
+﻿using HolaMundoApp.Data.Models;
+using HolaMundoApp.Resources;
+using HolaMundoApp.Resx;
 using HolaMundoApp.Services;
 using HolaMundoApp.Views;
 using Xamarin.Forms;
@@ -26,11 +28,12 @@ namespace HolaMundoApp.ViewModels
         private async void OnLoginClicked(object obj)
         {
             if (ValidateFields() && await _accountService.LoginAsync(UserName, Password))
-
-                {
-                    await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
+            {
+                GlobalVarsApplication.USERNAME = UserName;
+                await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
             }
-            else{
+            else
+            {
                 await Application.Current.MainPage.DisplayAlert(
                     AppResources.LoginPageInvalidLoginTitle,
                     AppResources.LoginPageInvalidLoginMessage, 

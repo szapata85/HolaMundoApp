@@ -1,4 +1,5 @@
 ﻿using HolaMundoApp.Data.Models;
+using HolaMundoApp.Resources;
 using HolaMundoApp.Services;
 using HolaMundoApp.Views;
 using System;
