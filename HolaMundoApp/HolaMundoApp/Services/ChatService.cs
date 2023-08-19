@@ -15,7 +15,7 @@ namespace HolaMundoApp.Services
         public ChatService()
         {
             hubConnection = new HubConnectionBuilder()
-                                 .WithUrl("http://192.168.1.70:5000/ChatHub")
+                                 .WithUrl(Settings.ChatHubBaseUri)
                                  .Build();
 
             hubConnection.ServerTimeout = TimeSpan.FromMinutes(1);

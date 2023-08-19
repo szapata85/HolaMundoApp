@@ -1,10 +1,7 @@
 ﻿using HolaMundoApp.Data.Models;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
-using System.Net;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace HolaMundoApp.Services
 {
@@ -15,7 +12,7 @@ namespace HolaMundoApp.Services
         public ChatBotService()
         {
             hubConnection = new HubConnectionBuilder()
-                                 .WithUrl("http://192.168.1.70:5000/ChatBotHub")
+                                 .WithUrl(Settings.ChatBotHubBaseUri)
                                  .Build();
 
             hubConnection.ServerTimeout = TimeSpan.FromMinutes(5);

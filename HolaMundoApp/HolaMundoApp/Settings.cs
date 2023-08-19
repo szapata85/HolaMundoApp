@@ -6,6 +6,8 @@
         //public const string ApiBaseUri = "https://localhost:7267/api";
         //public const string ApiBaseUri = "http://192.168.43.138:5000/api";
         public const string ApiBaseUri = "http://192.168.1.70:5000/api";
+        public const string ChatHubBaseUri = "http://192.168.1.70:5000/ChatHub";
+        public const string ChatBotHubBaseUri = "http://192.168.1.70:5000/ChatBotHub";
 
     }
 

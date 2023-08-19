@@ -63,7 +63,10 @@ namespace HolaMundoApp.ViewModels
         private async Task OnAppearingAsync()
         {
             Username = GlobalVarsApplication.USERNAME;
-            MessagesList = new List<MessageModel>();
+            if (MessagesList == null)
+            {
+                MessagesList = new List<MessageModel>();
+            }
             await _chatService.Init(Username);
         }
     }
