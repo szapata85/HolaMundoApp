@@ -39,8 +39,9 @@ namespace HolaMundoApp.ViewModels
         {
             if (!string.IsNullOrEmpty(MessageIn))
             {
-                await _chatService.SendMessage(new MessageItem { Message = MessageIn, SourceId = Username, TargetId = Username });
+                string msgtmp = MessageIn;
                 AddMessage(Username, MessageIn, true);
+                await _chatService.SendMessage(new MessageItem { Message = msgtmp, SourceId = Username, TargetId = Username });
             }
         }
 
