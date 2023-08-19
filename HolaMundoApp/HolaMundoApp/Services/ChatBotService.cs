@@ -8,17 +8,17 @@ using Xamarin.Forms;
 
 namespace HolaMundoApp.Services
 {
-    public class ChatService: IChatService
+    public class ChatBotService: IChatBotService
     {
         private readonly HubConnection hubConnection;
 
-        public ChatService()
+        public ChatBotService()
         {
             hubConnection = new HubConnectionBuilder()
-                                 .WithUrl("http://192.168.1.70:5000/ChatHub")
+                                 .WithUrl("http://192.168.1.70:5000/ChatBotHub")
                                  .Build();
 
-            hubConnection.ServerTimeout = TimeSpan.FromMinutes(1);
+            hubConnection.ServerTimeout = TimeSpan.FromMinutes(5);
         }
 
         public async Task Connect()
@@ -31,12 +31,12 @@ namespace HolaMundoApp.Services
             await hubConnection.StopAsync();
         }
 
-    public async Task SendMessageToAll(MessageItem messageItem)
+    public async Task SendMessage(MessageItem messageItem)
         {
             if (hubConnection.State == HubConnectionState.Disconnected)
                 await hubConnection.StartAsync();
 
-            await hubConnection.InvokeAsync("SendMessageToAll", messageItem);
+            await hubConnection.InvokeAsync("SendMessageToDevice", messageItem);
         }
         
         public void ReceiveMessage(Action<MessageItem> messageItem)

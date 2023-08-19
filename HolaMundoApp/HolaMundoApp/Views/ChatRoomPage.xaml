@@ -55,19 +55,13 @@
                                 </Frame>
                             </Grid>
                         </Grid>
-                        <!--<Grid RowDefinitions="auto, auto">
-                            <Label Text="{Binding Username}"/>
-                            <Label Text="{Binding Message}"/>
-                        </Grid>-->
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <StackLayout Grid.Row="1"
              Orientation="Horizontal">
-            <Entry Text="{Binding MessageIn}"
-           
-           HorizontalOptions="FillAndExpand"></Entry>
+            <Entry Text="{Binding MessageIn}" Placeholder="Message" HorizontalOptions="FillAndExpand"/>
             <Button Text="Send" Command="{Binding SendMsgCommand}"/>
         </StackLayout>
     </Grid>

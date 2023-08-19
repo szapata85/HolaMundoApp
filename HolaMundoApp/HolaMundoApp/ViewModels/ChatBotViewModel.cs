@@ -11,7 +11,7 @@ namespace HolaMundoApp.ViewModels
 {
     public class ChatBotViewModel : BaseViewModel
     {
-        private readonly IChatService _chatService;
+        private readonly IChatBotService _chatService;
         public ICommand AppearingCommand { get; set; }
         public ICommand SendMsgCommand { get; }
 
@@ -25,7 +25,7 @@ namespace HolaMundoApp.ViewModels
         private IEnumerable<MessageModel> _MessagesList;
         public IEnumerable<MessageModel> MessagesList { get => _MessagesList; set => SetProperty(ref _MessagesList, value); }
 
-        public ChatBotViewModel(IChatService chatService)
+        public ChatBotViewModel(IChatBotService chatService)
         {
             _chatService = chatService;
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
@@ -39,14 +39,14 @@ namespace HolaMundoApp.ViewModels
         {
             if (!string.IsNullOrEmpty(MessageIn))
             {
-                await _chatService.SendMessageToAll(new MessageItem { Message = MessageIn, SourceId = Username });
+                await _chatService.SendMessage(new MessageItem { Message = MessageIn, SourceId = Username, TargetId = Username });
                 AddMessage(Username, MessageIn, true);
             }
         }
 
         private void GetMessage(MessageItem messageItem)
         {
-            if (messageItem.SourceId != Username && !string.IsNullOrEmpty(messageItem.Message))
+            if (!string.IsNullOrEmpty(messageItem.Message))
                 AddMessage(messageItem.SourceId, messageItem.Message, false);
         }
 
@@ -61,8 +61,13 @@ namespace HolaMundoApp.ViewModels
         private async Task OnAppearingAsync()
         {
             Username = GlobalVarsApplication.USERNAME;
-            MessagesList = new List<MessageModel>();
+            if (MessagesList == null)
+            {
+                MessagesList = new List<MessageModel>();
+                AddMessage(Username, "Bienvenido", false);
+            }
             await _chatService.Init(Username);
+
         }
     }
 }
