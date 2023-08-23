@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Refit;
 using System;
 using System.Linq;
+using System.Net.Http;
 using Xamarin.Forms.Internals;
 
 
@@ -36,10 +37,12 @@ namespace HolaMundoApp
 
             serviceCollection.AddRefitClient<IClientApi>(refitSettings)
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { ServerCertificateCustomValidationCallback = (message, cert, chain, sslErrors) => true })
                 .AddHttpMessageHandler<BaseAddressHandler>();
 
             serviceCollection.AddRefitClient<IAccountApi>(refitSettings)
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { ServerCertificateCustomValidationCallback = (message, cert, chain, sslErrors) => true })
                 .AddHttpMessageHandler<BaseAddressHandler>();
 
 

@@ -1,6 +1,7 @@
 ﻿using HolaMundoApp.Data.Models;
 using HolaMundoApp.Resources;
 using HolaMundoApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -61,14 +62,14 @@ namespace HolaMundoApp.ViewModels
 
         private async Task OnAppearingAsync()
         {
+            
             Username = GlobalVarsApplication.USERNAME;
             if (MessagesList == null)
             {
                 MessagesList = new List<MessageModel>();
-                AddMessage(Username, "Bienvenido", false);
+                AddMessage(Username, "Bienvenido Chat Bot de CFA", false);
             }
             await _chatService.Init(Username);
-
         }
     }
 }

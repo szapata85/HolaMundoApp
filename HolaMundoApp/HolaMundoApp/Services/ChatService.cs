@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -15,7 +16,17 @@ namespace HolaMundoApp.Services
         public ChatService()
         {
             hubConnection = new HubConnectionBuilder()
-                                 .WithUrl(Settings.ChatHubBaseUri)
+                                 .WithUrl(Settings.ChatHubBaseUri, options =>
+                                 {
+                                     options.WebSocketConfiguration = conf =>
+                                     {
+                                         conf.RemoteCertificateValidationCallback = (message, cert, chain, errors) => { return true; };
+                                     };
+                                     options.HttpMessageHandlerFactory = factory => new HttpClientHandler
+                                     {
+                                         ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
+                                     };
+                                 })
                                  .Build();
 
             hubConnection.ServerTimeout = TimeSpan.FromMinutes(1);

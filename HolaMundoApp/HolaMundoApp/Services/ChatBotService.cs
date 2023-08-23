@@ -1,6 +1,7 @@
 ﻿using HolaMundoApp.Data.Models;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace HolaMundoApp.Services
@@ -12,7 +13,17 @@ namespace HolaMundoApp.Services
         public ChatBotService()
         {
             hubConnection = new HubConnectionBuilder()
-                                 .WithUrl(Settings.ChatBotHubBaseUri)
+                                 .WithUrl(Settings.ChatBotHubBaseUri, options =>
+                                 {
+                                     options.WebSocketConfiguration = conf =>
+                                     {
+                                         conf.RemoteCertificateValidationCallback = (message, cert, chain, errors) => { return true; };
+                                     };
+                                     options.HttpMessageHandlerFactory = factory => new HttpClientHandler
+                                     {
+                                         ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
+                                     };
+                                 })
                                  .Build();
 
             hubConnection.ServerTimeout = TimeSpan.FromMinutes(5);
