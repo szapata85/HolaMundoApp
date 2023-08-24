@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HolaMundoApp.Views.SettingsPage"
              xmlns:utility="clr-namespace:HolaMundoApp.Helpers"
-             utility:ViewModelLocator.AutoWireViewModel="True"
-             xmlns:styles="clr-namespace:HolaMundoApp.Resources.Styles">
+             utility:ViewModelLocator.AutoWireViewModel="True">
     
     <ContentPage.Content>
         <Grid ColumnDefinitions="auto,*" VerticalOptions="Start" Margin="10">
@@ -15,7 +14,10 @@
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
-            <Switch Grid.Row="0" Grid.Column="1" VerticalOptions="Center" x:Name="swNotifi" IsToggled="True">
+            <Switch Grid.Row="0" Grid.Column="1" VerticalOptions="Center" x:Name="swNotifi" IsToggled="{Binding IsToggled, Mode=TwoWay}">
+                <Switch.Behaviors>
+                    <utility:SwitchBehavior Command="{Binding swNotifyCommand}" />
+                </Switch.Behaviors>
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
                         <VisualState x:Name="On">
