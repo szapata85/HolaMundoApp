@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HolaMundoApp.Views.SettingsPage"
+             xmlns:utility="clr-namespace:HolaMundoApp.Helpers"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:styles="clr-namespace:HolaMundoApp.Resources.Styles">
+    
+    <ContentPage.Content>
+        <Grid ColumnDefinitions="auto,*" VerticalOptions="Start" Margin="10">
+            <Label VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="push notifications">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference swNotifi}, Path=IsToggled}" Value="true">
+                        <Setter Property="FontSize" Value="Large" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Switch Grid.Row="0" Grid.Column="1" VerticalOptions="Center" x:Name="swNotifi" IsToggled="True">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="On">
+                            <VisualState.Setters>
+                                <Setter Property="ThumbColor" Value="#005487" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Off">
+                            <VisualState.Setters>
+                                <Setter Property="ThumbColor" Value="#f7BA46" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Switch>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

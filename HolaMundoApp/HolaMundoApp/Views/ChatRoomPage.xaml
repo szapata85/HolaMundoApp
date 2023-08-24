@@ -19,7 +19,7 @@
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>
 
-    <Grid RowDefinitions="*, auto" Margin="10">
+    <Grid RowDefinitions="*, auto" Margin="10" BackgroundColor="#e2e6f1">
         <ListView ItemsSource="{Binding MessagesList}"
                   SeparatorVisibility="None"
                   HasUnevenRows="True">

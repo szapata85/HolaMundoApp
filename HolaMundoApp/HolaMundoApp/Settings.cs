@@ -8,9 +8,9 @@
         //public const string ApiBaseUri = "http://192.168.1.70:5000/api";
         //public const string ChatHubBaseUri = "http://192.168.1.70:5000/ChatHub";
         //public const string ChatBotHubBaseUri = "http://192.168.1.70:5000/ChatBotHub";
-        public const string ApiBaseUri = "https://7d4b-152-203-110-77.ngrok-free.app/api";
-        public const string ChatHubBaseUri = "https://7d4b-152-203-110-77.ngrok-free.app/ChatHub";
-        public const string ChatBotHubBaseUri = "https://7d4b-152-203-110-77.ngrok-free.app/ChatBotHub";
+        public const string ApiBaseUri = "https://fa45-152-203-110-77.ngrok-free.app/api";
+        public const string ChatHubBaseUri = "https://fa45-152-203-110-77.ngrok-free.app/ChatHub";
+        public const string ChatBotHubBaseUri = "https://fa45-152-203-110-77.ngrok-free.app/ChatBotHub";
 
     }
 
