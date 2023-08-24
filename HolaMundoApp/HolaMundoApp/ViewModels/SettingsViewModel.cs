@@ -13,10 +13,10 @@ namespace HolaMundoApp.ViewModels
 
         public SettingsViewModel()
         {
-            swNotifyCommand = new AsyncCommand<bool>(async (value) => await onNotifiCommand(value));
+            swNotifyCommand = new AsyncCommand<bool>(async (value) => await onNotifyCommand(value));
         }
 
-        private async Task onNotifiCommand(bool value)
+        private async Task onNotifyCommand(bool value)
         {
             
         }
